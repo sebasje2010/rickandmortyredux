@@ -5,7 +5,7 @@ import Searcher from './components/Searcher';
 import CharacterList from './components/CharacterList';
 import {getCharacter} from './api'
 import {setCharacters} from './actions'
-import logo from './statics/logo.png'
+import logo from './static/logo.png'
 import './App.css';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       dispatch(setCharacters(charactersRes))
     }
     fetchCharacters()
-  })
+  },[])
   return (
     <div className="App">
       <header className="App-header">
