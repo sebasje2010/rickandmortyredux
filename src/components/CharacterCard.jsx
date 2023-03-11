@@ -3,8 +3,8 @@ import { Card } from "antd";
 import Meta from "antd/lib/card/Meta";
 import './CharacterList.css'
 
-const CharacterCard=()=>(
-    <Card title='Rick' cover={<img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick" extra/>} extra={<StarOutlined/>}>
+const CharacterCard=({name})=>(
+    <Card title={name} cover={<img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt={name}/>} extra={<StarOutlined/>}>
         <Meta description='Alive'/>
     </Card>
 )

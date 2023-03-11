@@ -4,7 +4,7 @@ const CharacterList=({characters})=>{
     return(
         <div className='CharacterList'>
             {characters.map((character)=>{
-                return <CharacterCard/>
+                return <CharacterCard name={character.name} key={character.id}/>
             })}
         </div>
     )
