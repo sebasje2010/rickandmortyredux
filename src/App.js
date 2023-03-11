@@ -1,22 +1,25 @@
 import { useEffect } from 'react';
-import { Col } from 'antd';
+import { Col, Space, Spin } from 'antd';
 import { useSelector,useDispatch } from 'react-redux';
 import Searcher from './components/Searcher';
 import CharacterList from './components/CharacterList';
 import {getCharacter} from './api'
-import {setCharacters} from './actions'
+import {setCharacters, setLoading} from './actions'
 import logo from './static/logo.png'
 import './App.css';
 
 function App() {
 
   const characters=useSelector(state=>state.characters)
+  const loading=useSelector(state=>state.loading)
   const dispatch=useDispatch()
 
   useEffect(()=>{
     const fetchCharacters = async() => {
+      dispatch(setLoading(true))
       const charactersRes= await getCharacter()
       dispatch(setCharacters(charactersRes))
+      dispatch(setLoading(false))
     }
     fetchCharacters()
   },[])
@@ -31,7 +34,9 @@ function App() {
           </Searcher>
         </Col>
       </header>
-      <CharacterList characters={characters}/>
+      <div className='App-body'>
+        {loading?(<Spin spinning size='large'/>):(<CharacterList characters={characters}/>)}
+      </div>
       <footer></footer>
     </div>
   );

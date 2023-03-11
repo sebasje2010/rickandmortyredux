@@ -1,1 +1,2 @@
 export const SET_CHARACTERS='SET_CHARACTERS'
+export const SET_LOADING='SET_LOADING'
