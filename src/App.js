@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Col, Space, Spin } from 'antd';
+import { Col, Spin } from 'antd';
 import { useSelector,useDispatch } from 'react-redux';
 import Searcher from './components/Searcher';
 import CharacterList from './components/CharacterList';
