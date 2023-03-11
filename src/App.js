@@ -1,21 +1,25 @@
-import { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { useEffect } from 'react';
 import { Col } from 'antd';
+import { useSelector,useDispatch } from 'react-redux';
 import Searcher from './components/Searcher';
 import CharacterList from './components/CharacterList';
 import {getCharacter} from './api'
-import {setCharacters as setCharactersActions} from './actions'
+import {setCharacters} from './actions'
 import logo from './statics/logo.png'
 import './App.css';
 
-function App({characters,setCharacters}) {
+function App() {
+
+  const characters=useSelector(state=>state.characters)
+  const dispatch=useDispatch()
+
   useEffect(()=>{
     const fetchCharacters = async() => {
       const charactersRes= await getCharacter()
-      setCharacters(charactersRes)
+      dispatch(setCharacters(charactersRes))
     }
     fetchCharacters()
-  },[])
+  })
   return (
     <div className="App">
       <header className="App-header">
@@ -33,12 +37,4 @@ function App({characters,setCharacters}) {
   );
 }
 
-const mapStateToProps=(state)=>({
-  characters:state.characters
-})
-
-const mapDispatchToProps=(dispatch)=>({
-  setCharacters: (value)=>dispatch(setCharactersActions(value))
-})
-
-export default connect(mapStateToProps,mapDispatchToProps) (App);
+export default App;
