@@ -1,24 +1,25 @@
+import { fromJS } from "immutable"
 import { SET_CHARACTERS, SET_FAVORITE, SET_LOADING } from "../actions/types"
 
-const initialState={
+const initialState=fromJS({
     characters:[],
     loading:false
-}
+})
 
 export const charactersReducer=(state=initialState,action)=>{
     switch(action.type){
         case SET_CHARACTERS:
-            return{...state,characters:action.payload}
+            return state.setIn(['characters'],fromJS(action.payload))
         case SET_FAVORITE:
-            const newCharacterList=[...state.characters]
-            const currentCharacterIndex=newCharacterList.findIndex((character)=>{return character.id===action.payload.characterId})
+            const currentCharacterIndex=state.get('characters').findIndex((character)=>{return character.get('id')===action.payload.characterId})
             if(currentCharacterIndex<0){
                 return state
             }
-            newCharacterList[currentCharacterIndex].favorite=!newCharacterList[currentCharacterIndex].favorite
-            return {...state, characters:newCharacterList}
+            
+            const isFavorite = state.getIn(['characters',currentCharacterIndex,'favorite'])
+            return state.setIn(['characters',currentCharacterIndex,'favorite'],!isFavorite)
         case SET_LOADING:
-            return{...state,loading:action.payload}
+            return state.setIn(['loading'], action.payload)
         default:
             return state
     }
