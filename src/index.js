@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './routes/App';
 import { Provider } from 'react-redux';
 import { compose, applyMiddleware, legacy_createStore as createStore } from 'redux';
 import { logger } from './middlewares'
