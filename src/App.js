@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Col, Spin } from 'antd';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector,useDispatch, shallowEqual } from 'react-redux';
 import Searcher from './components/Searcher';
 import CharacterList from './components/CharacterList';
 import {getCharacter} from './api'
@@ -9,8 +9,8 @@ import logo from './static/logo.png'
 import './App.css';
 
 function App() {
-  const characters=useSelector(state=>state.get('characters')).toJS()
-  const loading=useSelector(state=>state.get('loading'))
+  const characters=useSelector(state=>state.getIn(['data','characters'],shallowEqual)).toJS()
+  const loading=useSelector(state=>state.getIn(['ui','loading']))
   const dispatch=useDispatch()
 
   useEffect(()=>{
