@@ -1,26 +1,19 @@
 import { useEffect } from 'react';
 import { Col, Spin } from 'antd';
 import { useSelector,useDispatch, shallowEqual } from 'react-redux';
-import Searcher from './components/Searcher';
+import {Searcher} from './components/Searcher';
 import CharacterList from './components/CharacterList';
-import {getCharacter} from './api'
-import {setCharacters, setLoading} from './actions'
 import logo from './static/logo.png'
 import './App.css';
+import { fetchCharacters } from './slices/dataSlice';
 
 function App() {
-  const characters=useSelector(state=>state.getIn(['data','characters'],shallowEqual)).toJS()
-  const loading=useSelector(state=>state.getIn(['ui','loading']))
+  const characters=useSelector((state)=>state.data.charactersFiltered,shallowEqual)
+  const loading=useSelector((state)=>state.ui.loading)
   const dispatch=useDispatch()
 
   useEffect(()=>{
-    const fetchCharacters = async() => {
-      dispatch(setLoading(true))
-      const charactersRes= await getCharacter()
-      dispatch(setCharacters(charactersRes))
-      dispatch(setLoading(false))
-    }
-    fetchCharacters()
+    dispatch(fetchCharacters())
   },[])
   return (
     <div className="App">

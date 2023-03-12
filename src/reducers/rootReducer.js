@@ -1,11 +1,10 @@
-import { combineReducers } from "redux-immutable";
-import { uiReducer } from './ui'
-import { charactersReducer } from './characters'
+import { combineReducers } from "redux";
+import dataReducer from '../slices/dataSlice'
+import uiReducer from '../slices/uiSlice'
 
 const rootReducer= combineReducers({
-    data: charactersReducer,
-    ui: uiReducer,
-
+    data: dataReducer,
+    ui:uiReducer
 })
 
 export default rootReducer

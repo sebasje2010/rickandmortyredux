@@ -1,7 +1,16 @@
 import { Input } from "antd";
+import { useDispatch } from "react-redux";
+import { setFilter } from "../slices/dataSlice";
 
-const Searcher=()=>{
-    return <Input.Search placeholder="Busca tu personaje"/>
-}
+export const Searcher = () => {
 
-export default Searcher
+    const dispatch = useDispatch();
+  
+    const handleOnChange = (e) => {
+      dispatch(setFilter(e.target.value.toLowerCase()));
+    }
+  
+    return<Input.Search 
+      placeholder="Buscar..." 
+      onChange={handleOnChange}/>
+  }
