@@ -11,7 +11,7 @@ const CharacterCard=({name,image,species,id,favorite})=>{
         dispatch(setFavorite({characterId:id}))
     }
     return (
-    <Card title={name} cover={<img src={image} alt={name}/>} extra={<StarButton isFavorite={favorite} onClick={handleOnFavorite}/>}>
+    <Card title={name} cover={<img src={image} key={id} alt={name}/>} extra={<StarButton isFavorite={favorite} onClick={handleOnFavorite}/>}>
         <Meta description={species}/>
     </Card>
     )

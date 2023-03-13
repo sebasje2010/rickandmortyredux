@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Col, Spin } from 'antd';
+import { Col, Spin} from 'antd';
 import { useSelector,useDispatch, shallowEqual } from 'react-redux';
 import {Searcher} from '../components/Searcher';
 import CharacterList from '../components/CharacterList';
@@ -27,7 +27,9 @@ function Home() {
         </Col>
       </header>
       <div className='App-body'>
-        {loading?(<Spin spinning size='large'/>):(<CharacterList characters={characters}/>)}
+        {loading?(<Spin spinning size='large'/>):(
+          <CharacterList characters={characters}/>
+      )}
       </div>
       <footer></footer>
     </div>

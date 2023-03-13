@@ -9,7 +9,7 @@ const initialState={
 }
 
 export const fetchCharacters=createAsyncThunk(
-    'data/fetchCharacter', 
+    'data/fetchCharacters', 
     async(_,{dispatch})=>{
         dispatch(setLoading(true))
         const charactersRes= await getCharacter()
