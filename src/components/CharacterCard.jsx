@@ -1,4 +1,5 @@
 import { Card } from "antd";
+import { Link } from "react-router-dom";
 import Meta from "antd/lib/card/Meta";
 import { useDispatch } from "react-redux";
 import { setFavorite } from "../slices/dataSlice";
@@ -11,8 +12,10 @@ const CharacterCard=({name,image,species,id,favorite})=>{
         dispatch(setFavorite({characterId:id}))
     }
     return (
-    <Card title={name} cover={<img src={image} key={id} alt={name}/>} extra={<StarButton isFavorite={favorite} onClick={handleOnFavorite}/>}>
-        <Meta description={species}/>
+    <Card title={name} cover={<img src={image} alt={name}/>} key={id} extra={<StarButton isFavorite={favorite} onClick={handleOnFavorite}/>}>
+        <Link to={`/character/${id}`} key={id}>
+        <Meta description='Detailed Information'/>
+        </Link>
     </Card>
     )
     }
