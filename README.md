@@ -1,6 +1,6 @@
 # Rick and Morty Wiki
 
-This project was created as an implementation of Redux and to compare it to Context.api.
+This project was created as an implementation of Redux and to compare it to Context.api.\
 This project uses the Rick and Morty API found at (https://rickandmortyapi.com)
 
 # Getting Started with Create React App

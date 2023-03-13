@@ -13,7 +13,7 @@ const CharacterCard=({name,image,species,id,favorite})=>{
     }
     return (
     <Card title={name} cover={<img src={image} alt={name}/>} key={id} extra={<StarButton isFavorite={favorite} onClick={handleOnFavorite}/>}>
-        <Link to={`/character/${id}`} key={id}>
+        <Link to={`/rickandmortyredux/character/${id}`} key={id}>
         <Meta description='Detailed Information'/>
         </Link>
     </Card>
